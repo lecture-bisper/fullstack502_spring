@@ -1,0 +1,55 @@
+//  build.gradle : 스프링 프로젝트의 라이브러리 종속성 문제를 해결하고 패키지 빌드를 하기 위한 설정 파일
+//  스프링에서 사용하는 빌드 시스템은 MAVEN, Gradle 2가지가 사용 됨
+//  현재는 gradle 를 많이 사용 함
+
+plugins {
+//    현재 프로젝트에서 사용하는 언어
+    id 'java'
+//    스프링부트 버전
+    id 'org.springframework.boot' version '3.5.0'
+//    종속성 관리 버전
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+//  프로젝트 패키지명
+group = 'btic.full502'
+//  현재 프로젝트 버전
+version = '1.1.5'
+
+//  사용하는 JDK 버전 설정
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+//  라이브러리를 다운로드 받는 사이트 정보 설정
+repositories {
+    mavenCentral()
+}
+
+//  스프링 프로젝트에서 사용하는 라이브러리 종속성을 추가하는 부분
+// https://mvnrepository.com/ 에서 원하는 라이브러리를 검색 후 내용을 복사해서 사용
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11
+    implementation 'com.oracle.database.jdbc:ojdbc11:23.8.0.25.04'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
