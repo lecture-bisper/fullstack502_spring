@@ -95,6 +95,24 @@ public class ThymeleafController {
 
     return mv;
   }
+
+  @RequestMapping("/test3")
+  public ModelAndView test3() throws Exception {
+    ModelAndView mv = new ModelAndView("thymeleaf/test3");
+
+    mv.addObject("chkVal", false);
+    mv.addObject("mulVal", true);
+    mv.addObject("selVal", true);
+    mv.addObject("disVal", true);
+    mv.addObject("readVal", true);
+
+    return mv;
+  }
+
+  @RequestMapping("/test4")
+  public String test4() {
+    return "thymeleaf/test4";
+  }
 }
 
 

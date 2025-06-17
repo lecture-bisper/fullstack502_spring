@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thymeleaf 사용하기 3</title>
+
+  <script src="/js/jquery-3.7.1.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/js/bootstrap.bundle.js"></script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>html 태그의 속성값 설정하기</h3>
+<!--  thymeleaf 에는 th:attr 이라는 속성을 사용하여 html 태그의 속성값을 변경할 수 있음 -->
+<!--  th:attr="속성명=수정할값" 형태로 사용 -->
+<!--  하나의 태그의 th:attr 속성은 한번만 사용 가능, 한번에 여러 속성 변경 시 ' , ' 사용 -->
+<!--  th:attrappend, th:attrprepend 라는 추가 속성을 사용하여 html 태그의 기존 속성값에 데이터를 추가할 수 있음 -->
+<!--  th:attrappend="html속성명=추가할데이터" 형태로 사용하여 기존 값 뒤에 데이터를 추가함 -->
+<!--  th:attrprepend="html속성명=추가할데이터" 형태로 사용하여 기존 값의 앞에 데이터를 추가함 -->
+<!--  thymeleaf 는 html 태그에서 사용되는 모든 종류의 속성을 제공하고 있기 때문에 'th:attr' 보다는 'th:html속성명' 형태를 사용하는 것을 권장하고 있음 -->
+
+  <div>
+    <a href="https://www.daum.net" target="_blank" class="btn btn-link">다음 홈페이지 (html에 직접 입력)</a>
+    <a href="" th:attr="href=@{https://www.daum.net}" target="_blank" class="btn btn-link">다음 홈페이지 (th:attr로 수정)</a>
+    <a href="" th:href="@{https://www.daum.net}" target="_blank" class="btn btn-link">다음 홈페이지 (th:html속성명 으로 수정)</a><br>
+
+    <img src="/images/cat02.png" alt="식탁 다리를 잡고 있는 고양이"><br>
+    <img src="/images/cat02.png" alt="" th:attr="src=@{/images/cat01.jpg}, alt='윙크하는 고양이'"><br>
+    <img src="" th:src="@{/images/cat04.jpg}" alt="" th:alt="'귀여운 고양이'"><br>
+    <br>
+    <button type="button">버튼 태그</button>
+<!--    html 태그의 class 속성을 th:class 를 사용하여 덮어쓰기 -->
+    <button type="button" class="" th:class="'btn btn-primary'">버튼 태그 (th:class 로 class 속성 적용)</button>
+<!--    html 태그의 기존 class 속성값에 th:attrappend 를 사용하여 데이터를 뒤에 추가함 -->
+    <button type="button" class="btn" th:attrappend="class=' btn-info'">버튼 태그 (th:attrappend 로 기존 class 속성 뒤에 데이터 추가)</button>
+<!--    html 태그의 기존 class 속성값에 ht:attrprepend 를 사용하여 데이터를 앞에 추가함 -->
+    <button type="button" class="btn-success" th:attrprepend="class='btn '">버튼 태그 (th:attrprepend 로 기존 class 속성 앞에 데이터 추가)</button>
+  </div>
+
+  <br><hr><br>
+
+  <h3>고정값 논리 속성 설정하기</h3>
+<!--  html5 태그의 속성 중 속성명 자체로 값이 되는 속성(readonly, disabled, multiple, checked) 의 값을 설정할 경우 사용 -->
+<!--  컨트롤러에서 전달된 논리 데이터(Boolean 값) 를 사용하여 해당 속성에 'th:고정값속성명' 에 설정하여 사용 -->
+
+  <button type="button" class="btn btn-primary">일반 버튼</button>
+  <button type="button" class="btn btn-primary" disabled>disabled 버튼</button>
+
+  <div>
+<!--    thymeleaf 의 고정값 논리 속성을 사용하여 checked 에 값을 true 로 설정-->
+    <input type="checkbox" value="사과" th:checked="true">사과
+<!--    html 기본 속성은 checked 를 사용 -->
+    <input type="checkbox" value="수박" checked>수박
+<!--    thymeleaf 의 고정값 논리 속성을 사용하여 서버에서 전달받은 변수의 값으로 설정 -->
+    <input type="checkbox" value="배" th:checked="${chkVal}">배
+    <input type="checkbox" value="포도">포도
+    <br><br>
+    <select class="form-control" th:multiple="${mulVal}">
+      <option value="사과">사과</option>
+      <option value="수박">수박</option>
+      <option value="배" th:selected="${selVal}">배</option>
+      <option value="포도" th:selected="${selVal}">포도</option>
+    </select>
+    <br>
+    <input type="text" class="form-control" placeholder="내용을 입력하세요" th:disabled="${disVal}" value="기본 텍스트">
+    <input type="text" class="form-control" placeholder="내용을 입력하세요" th:readonly="${readVal}" value="기본 텍스트">
+  </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
