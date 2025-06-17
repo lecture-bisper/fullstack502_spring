@@ -110,8 +110,12 @@ public class ThymeleafController {
   }
 
   @RequestMapping("/test4")
-  public String test4() {
-    return "thymeleaf/test4";
+  public ModelAndView test4() {
+    ModelAndView mv = new ModelAndView("thymeleaf/test4");
+
+    mv.addObject("jsValue", "타임리프의 데이터");
+
+    return mv;
   }
 }
 
