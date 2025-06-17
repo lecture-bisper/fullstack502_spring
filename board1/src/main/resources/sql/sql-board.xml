@@ -32,5 +32,34 @@
     SELECT board_idx, title, create_id, create_date, hit_cnt
     FROM t_board
     WHERE deleted_yn = 'N'
+    ORDER BY board_idx DESC
+  </select>
+
+<!--  게시글 등록 -->
+<!--  파라미터로 가져온 데이터를 SQL 쿼리문에 입력할 경우 #{변수명} 형태로 사용 -->
+<!--  파라미터 타입이 BoardDTO 이므로 BoardDTO 클래스의 필드명을 그대로 사용함  -->
+  <insert id="insertBoard" parameterType="bitc.full502.board1.dto.BoardDTO">
+    INSERT INTO t_board (title, contents, create_id, create_date)
+    VALUES (#{title}, #{contents}, #{createId}, NOW())
+  </insert>
+
+<!--  게시글 상세보기 -->
+<!--  파라미터 타입이 기본 타입일 경우는 java의 기본 타입명을 그대로 사용 -->
+<!--  파라미터 타입이 int 이므로 해당 매개변수명을 SQL 쿼리문에 그대로 사용함 -->
+  <select id="selectBoardDetail" parameterType="int">
+    SELECT board_idx, title, contents, create_id, create_date, update_id, update_date, hit_cnt
+    FROM t_board
+    WHERE board_idx = #{boardIdx}
   </select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+

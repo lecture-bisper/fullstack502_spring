@@ -11,5 +11,22 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
+//  게시글 목록 보기
   List<BoardDTO> selectBoardList() throws Exception;
+
+//  게시글 등록
+  void insertBoard(BoardDTO board) throws Exception;
+
+//  게시글 상세보기
+  BoardDTO selectBoardDetail(int boardIdx) throws Exception;
 }
+
+
+
+
+
+
+
+
+
+

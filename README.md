@@ -19,3 +19,8 @@
 	5. thymeleaf 문법 - 산술 연산자, 비교 연산자
 	6. thymeleaf 문법 - 조건문(삼항 연산자, if/unless, switch ~ case)
 	7. thymeleaf 문법 - 반복문(배열, 리스트, 상태변수)
+3. 3일차 (board1)
+	1. thymeleaf 문법 - 속성값 변경(attr, attrappend, attrprepend)
+	2. thymeleaf 문법 - 고정값 논리 속성 변경
+	3. thymeleaf 문법 - fragment 사용
+	4. board1 - 게시판 글 등록하기, 게시판 글 상세보기

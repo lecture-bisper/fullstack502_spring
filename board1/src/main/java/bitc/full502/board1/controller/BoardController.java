@@ -65,6 +65,44 @@ public class BoardController {
 //    설정된 ModelAndView 객체를 클라이언트로 전달
     return mv;
   }
+
+//  글 쓰기 View
+//  사용자 입력을 위한 웹 페이지 이므로 html 파일 연결
+  @RequestMapping("/boardWrite.do")
+  public String boardWrite() throws Exception {
+    return "board/boardWrite";
+  }
+
+//  글 쓰기 처리
+//  boardWrite.html 파일에서 form 태그에 설정된 url
+//  사용자가 입력한 데이터를 BoardDTO 타입으로 가져옴
+//  input 태그의 name 속성값이 BoardDTO 클래스의 필드와 이름이 같아야 함(다를 경우 전달받는 데이터 없음)
+  @RequestMapping("/boardInsert.do")
+  public String boardInsert(BoardDTO board) throws Exception {
+
+//    서비스를 이용하여 데이터베이스 게시글 정보 등록
+    boardService.insertBoard(board);
+
+//    JSP의 response.sendRedirect() 와 동일한 기능, 클라이언트에게 지정한 URL로 다시 접속 요청
+    return "redirect:/board/boardList.do";
+  }
+
+//  글 상세보기, 지정한 게시글 번호를 사용
+  @RequestMapping("/boardDetail.do")
+  public ModelAndView boardDetail(int boardIdx) throws Exception {
+    ModelAndView mv = new ModelAndView("board/boardDetail");
+
+//    서비스를 사용하여 지정한 게시글 번호의 내용을 가져옴
+    BoardDTO board = boardService.selectBoardDetail(boardIdx);
+//    가져온 데이터를 ModelAndView 클래스 타입의 객체에 저장
+    mv.addObject("board", board);
+
+    return mv;
+  }
+
+//  글 수정
+
+//  글 삭제
 }
 
 

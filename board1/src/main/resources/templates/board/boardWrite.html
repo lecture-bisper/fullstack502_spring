@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스프링부트 게시판</title>
+
+  <script src="/js/jquery-3.7.1.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script src="/js/bootstrap.bundle.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#btn-cancel").on("click", function() {
+        history.back();
+      });
+    });
+  </script>
+</head>
+<body>
+
+<header>
+  <div class="container p-5 mt-3">
+    <div class="text-center">
+      <h1>스프링부트 게시판 만들기</h1>
+      <h3>게시판 글 등록 페이지</h3>
+    </div>
+  </div>
+</header>
+
+<main class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4 mx-auto">
+      <form action="/board/boardInsert.do" method="post">
+        <div class="mt-3">
+          <label for="title" class="form-label">글 제목 : </label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
+        </div>
+        <div class="mt-3">
+          <label for="user-id" class="form-label">작성자 : </label>
+          <input type="text" class="form-control" id="user-id" name="createId" placeholder="작성자 ID를 입력하세요">
+        </div>
+        <div class="mt-3">
+          <label for="contents" class="form-label">내용 : </label>
+          <textarea name="contents" id="contents" rows="5" class="form-control" placeholder="글 내용을 입력하세요"></textarea>
+        </div>
+        <div class="mt-3 d-grid gap-2">
+          <button type="submit" class="btn btn-primary">등록</button>
+          <button type="reset" class="btn btn-secondary" id="btn-cancel">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer class="container-fluid border-top p-5 mt-5 text-center">
+  <p class="lead text-muted">made by fullstack 502</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
