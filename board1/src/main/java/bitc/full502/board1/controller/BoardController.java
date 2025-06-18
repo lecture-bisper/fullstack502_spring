@@ -6,6 +6,7 @@ import bitc.full502.board1.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -101,8 +102,28 @@ public class BoardController {
   }
 
 //  글 수정
+  @RequestMapping("/updateBoard.do")
+  public String updateBoard(BoardDTO board) throws Exception {
+//    1. 클라이언트에서 전달받은 수정된 데이터와 게시글 번호 받아오기
+//    2. 서비스를 이용하여 전달받은 데이터로 DB 내용 수정
+//    3. 목록 페이지로 리다이렉트
+
+    boardService.updateBoard(board);
+
+    return "redirect:/board/boardList.do";
+  }
 
 //  글 삭제
+  @RequestMapping("/deleteBoard.do")
+  public String deleteBoard(@RequestParam int boardIdx) throws Exception {
+//    1. 클라이언트에서 전달한 삭제할 게시물 번호를 받아오기
+//    2. 서비스를 이용하여 지정한 게시물 번호의 DB를 삭제
+//    3. 목록 페이지로 리다이렉트
+
+    boardService.deleteBoard(boardIdx);
+
+    return "redirect:/board/boardList.do";
+  }
 }
 
 

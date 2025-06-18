@@ -24,3 +24,8 @@
 	2. thymeleaf 문법 - 고정값 논리 속성 변경
 	3. thymeleaf 문법 - fragment 사용
 	4. board1 - 게시판 글 등록하기, 게시판 글 상세보기
+4. 4일차 (board1)
+	1. board1 - 게시판 글 수정하기, 게시판 글 삭제하기
+	2. bootstrap - 프로젝트에 포함하기, grid system, container
+	3. bootstrap - 타이포그라피, 테이블, 테마색상, 버튼
+	4. bootstrap - 유틸리티 (border, rounded, float, clearfix, spacing, size)

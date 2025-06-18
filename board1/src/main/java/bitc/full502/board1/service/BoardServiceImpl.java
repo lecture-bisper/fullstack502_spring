@@ -30,8 +30,29 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public BoardDTO selectBoardDetail(int boardIdx) throws Exception {
+//    Mapper 을 이용하여 지정한 게시글의 조회수를 데이터베이스에서 수정
+    boardMapper.updateHitCount(boardIdx);
+
 //    Mapper 를 사용하여 데이터베이스에서 지정한 게시글 정보를 가져옴
     return boardMapper.selectBoardDetail(boardIdx);
+  }
+
+//  게시글 삭제
+  @Override
+  public void deleteBoard(int boardIdx) throws Exception {
+//    1. 매개변수로 게시글 번호를 받아옴
+//    2. mapper 를 이용하여 지정한 게시글 번호의 게시글을 DB에서 삭제
+
+    boardMapper.deleteBoard(boardIdx);
+  }
+
+//  게시글 수정
+  @Override
+  public void updateBoard(BoardDTO board) throws Exception {
+//    1. 매개변수로 수정된 BoardDTO 객체를 받아옴
+//    2. mapper 를 이용하여 매개변수로 받아온 BoardDTO 타입의 객체로 실제 DB의 내용을 수정
+
+    boardMapper.updateBoard(board);
   }
 }
 

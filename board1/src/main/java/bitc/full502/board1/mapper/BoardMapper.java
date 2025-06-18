@@ -2,6 +2,7 @@ package bitc.full502.board1.mapper;
 
 import bitc.full502.board1.dto.BoardDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,6 +20,16 @@ public interface BoardMapper {
 
 //  게시글 상세보기
   BoardDTO selectBoardDetail(int boardIdx) throws Exception;
+
+//  @Param : mapper 파일과 연동된 xml 파일에서 사용할 매개변수명을 새로 지정하는 어노테이션
+//  게시글 삭제하기
+  void deleteBoard(@Param("idx") int boardIdx) throws Exception;
+
+//  게시글 수정하기
+  void updateBoard(BoardDTO board) throws Exception;
+
+//  게시글 조회수 증가
+  void updateHitCount(@Param("boardIdx") int boardIdx) throws Exception;
 }
 
 

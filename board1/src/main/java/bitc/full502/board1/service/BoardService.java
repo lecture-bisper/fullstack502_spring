@@ -14,4 +14,10 @@ public interface BoardService {
 
 //  게시글 상세보기
   BoardDTO selectBoardDetail(int boardIdx) throws Exception;
+
+//  게시글 삭제
+  void deleteBoard(int boardIdx) throws Exception;
+
+//  게시글 수정
+  void updateBoard(BoardDTO board) throws Exception;
 }

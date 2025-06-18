@@ -51,6 +51,26 @@
     FROM t_board
     WHERE board_idx = #{boardIdx}
   </select>
+
+<!--  게시글 삭제하기 -->
+  <update id="deleteBoard" parameterType="int">
+    UPDATE t_board SET deleted_yn = 'Y'
+    WHERE board_idx = #{idx}
+  </update>
+
+<!--  게시글 수정하기 -->
+  <update id="updateBoard" parameterType="bitc.full502.board1.dto.BoardDTO">
+    UPDATE t_board
+    SET title = #{title}, contents = #{contents}, update_id = #{updateId}, update_date = NOW()
+    WHERE board_idx = #{boardIdx}
+  </update>
+
+<!--  게시글 조회수 증가 -->
+  <update id="updateHitCount" parameterType="int">
+    UPDATE t_board
+    SET hit_cnt = hit_cnt + 1
+    WHERE board_idx = #{boardIdx}
+  </update>
 </mapper>
 
 
