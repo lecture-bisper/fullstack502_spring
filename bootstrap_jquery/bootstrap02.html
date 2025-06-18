@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부트스트랩 사용하기 2</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="container">
+  <div>
+    <h3>타이포그라피 h1 ~ h6</h3>
+<!--    부트스트랩에서 텍스트 표현을 위해서 제공하는 디자인 클래스 -->
+<!--    h1 ~ h6 는 태그 및 class 를 제공하고 있음 -->
+    <h1>부트스트랩의 h1 태그</h1>
+    <p class="h1">부트스트랩의 h1 클래스</p>
+    <h2>부트스트랩의 h2 태그</h2>
+    <p class="h2">부트스트랩의 h2 클래스</p>
+    <h3>부트스트랩의 h3 태그</h3>
+    <p class="h3">부트스트랩의 h3 클래스</p>
+    <h4>부트스트랩의 h4 태그</h4>
+    <p class="h4">부트스트랩의 h4 클래스</p>
+    <h5>부트스트랩의 h5 태그</h5>
+    <p class="h5">부트스트랩의 h5 클래스</p>
+    <h6>부트스트랩의 h6 태그</h6>
+    <p class="h6">부트스트랩의 h6 클래스</p>
+
+    <br><hr><br>
+
+    <h3>display</h3>
+<!--    부트스트랩에서 제공하는 제목 클래스, h1 보다 더 큰 제목을 원할 경우 사용 -->
+<!--    .display-1 ~ .display-6 -->
+    <p class="display-1">display-1</p>
+    <p class="display-2">display-2</p>
+    <p class="display-3">display-3</p>
+    <p class="display-4">display-4</p>
+    <p class="display-5">display-5</p>
+    <p class="display-6">display-6</p>
+    <h1>h1 태그</h1>
+
+    <br><hr><br>
+
+    <h3>small</h3>
+<!--  h1 ~ h6 보다 조금 작은 형태의 소제목을 입력 시 사용하기 위한 태그 및 클래스 -->
+<!--    <small></small>, .small  -->
+    <h1>h1 제목, <small>h1의 소제목</small></h1>
+    <h2>h2 제목, <small>h2의 소제목</small></h2>
+    <h3>h3 제목, <small>h3의 소제목</small></h3>
+    <h4>h4 제목, <small>h4의 소제목</small></h4>
+    <h5>h5 제목, <small>h5의 소제목</small></h5>
+    <h6>h6 제목, <small>h6의 소제목</small></h6>
+  </div>
+
+  <br><hr><br>
+
+  <h3>부트스트랩 테마컬러</h3>
+  <div>
+<!--    부트스트랩에서는 컬러를 빠르게 사용할 수 있도록 테마 컬러를 제공함 -->
+<!--    텍스트, 버튼, 배경 등에 사용됨 -->
+<!--    .text-테마컬러, .bg-테마컬러, .btn-테마컬러 -->
+<!--    테마는 primary, success, info, warning, danger, light, dark, secondary 로 총 8가지가 존재함 -->
+<!--    텍스트의 경우는 muted, body, white 가 추가로 더 있음 -->
+<!--    텍스트의 경우는 텍스트의 불투명도 50% 를 사용하면 .text-black-50, .text-white-50 이 추가로 존재함 -->
+<!--    텍스트의 경우는 텍스트 배경 생상으로 .text-bg-테마컬러 를 사용할 수 있음 -->
+<!--    배경 및 버튼은 기본 테마 색상 8가지가 존재함 -->
+<!--    배경의 경우는 각 기본 테마 색상에 subtle 이 추가로 더 존재함 -->
+
+    <div>
+      <h4>텍스트 테마컬러</h4>
+      <p class="text-primary">primary</p>
+      <p class="text-bg-primary">bg-primary</p>
+      <p class="text-success">success</p>
+      <p class="text-bg-success">bg-success</p>
+      <p class="text-info">info</p>
+      <p class="text-bg-info">bg-info</p>
+      <p class="text-warning">warning</p>
+      <p class="text-bg-warning">bg-warning</p>
+      <p class="text-danger">danger</p>
+      <p class="text-bg-danger">bg-danger</p>
+      <p class="text-light text-bg-secondary">light</p>
+      <p class="text-bg-light border">bg-light</p>
+      <p class="text-dark">dark</p>
+      <p class="text-bg-dark">bg-dark</p>
+      <p class="text-secondary">secondary</p>
+      <p class="text-bg-secondary">secondary</p>
+      <p class="text-white text-bg-secondary">white</p>
+      <p class="text-bg-white border">bg-white</p>
+      <p class="text-muted">muted</p>
+      <p class="text-body">body</p>
+      <p class="text-black">black</p>
+      <p class="text-black-50 bg-white">text-black-50</p>
+      <p class="text-white-50 bg-black">text-white-50</p>
+    </div>
+
+    <br><hr><br>
+
+    <div>
+      <h4>배경 테마 컬러</h4>
+      <div class="p-2 bg-primary">bg-primary</div>
+      <div class="p-2 bg-primary-subtle">bg-primary-subtle</div>
+      <div class="p-2 bg-secondary">bg-secondary</div>
+      <div class="p-2 bg-secondary-subtle">bg-secondary-subtle</div>
+      <div class="p-2 bg-success">bg-success</div>
+      <div class="p-2 bg-success-subtle">bg-success-subtle</div>
+      <div class="p-2 bg-info">bg-info</div>
+      <div class="p-2 bg-info-subtle">bg-info-subtle</div>
+      <div class="p-2 bg-warning">bg-warning</div>
+      <div class="p-2 bg-warning-subtle">bg-warning-subtle</div>
+      <div class="p-2 bg-danger">bg-danger</div>
+      <div class="p-2 bg-danger-subtle">bg-danger-subtle</div>
+      <div class="p-2 bg-light">bg-light</div>
+      <div class="p-2 bg-light-subtle">bg-light-subtle</div>
+      <div class="p-2 bg-dark text-light">bg-dark</div>
+      <div class="p-2 bg-dark-subtle">bg-dark-subtle</div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>table</h3>
+<!--    부트스트랩에서 미리 디자인 된 table 을 제공함 -->
+<!--    .table 를 사용 -->
+<!--    주로 사용하는 클래스로 .table, .table-striped, .table-hover 가 있음 -->
+<!--    table 에도 테마 컬러를 사용함 (.table-테마컬러 형태로 사용) -->
+<!--    테마 컬러는 primary, secondary, success, info, warning, danger, light, dark 가 있으며, active 가 추가 됨 --->
+<!--    table 의 테마 컬러는 <table>, <thead>, <tbody>, <tr>, <th>, <td> 각각 따로 사용 가능 -->
+
+    <div>
+      <h4>기본 table</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>아이유</td>
+          <td>34</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <h4>table-striped</h4>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>아이유</td>
+          <td>34</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <h4>table-hover</h4>
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>아이유</td>
+          <td>34</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <h4>가장 많이 사용(table, table-striped, table-hover 동시 사용)</h4>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>아이유</td>
+          <td>34</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <h4>table 색상</h4>
+      <table class="table table-dark table-hover table-striped">
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>아이유</td>
+          <td>34</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <h4>table 테마 색상(위치에 따라 다르게)</h4>
+      <table class="table">
+        <thead class="table-dark">
+        <tr>
+          <th>번호</th>
+          <th>이름</th>
+          <th>나이</th>
+        </tr>
+        </thead>
+        <tbody class="table-primary">
+        <tr>
+          <td>1</td>
+          <td>유재석</td>
+          <td>50</td>
+        </tr>
+        <tr class="table-success">
+          <td>2</td>
+          <td>유병재</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td class="table-info">3</td>
+          <td class="table-warning">아이유</td>
+          <td class="table-danger">34</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>button</h3>
+<!--    부트스트랩에서 미리 디자인된 버튼을 제공함 -->
+<!--    .btn 을 class 에 추가하여 사용 -->
+<!--    class에 추가로 .btn-테마컬러 를 사용하여 버튼 색상을 변경, .btn-link 가 추가되어 있음  -->
+<!--    .btn-outline-테마컬러 를 사용하여 버튼의 테두리만 테마컬러를 사용할 수 있음 -->
+<!--    .btn 클래스는 a 태그에도 사용이 가능함 -->
+<!--    부모 태그에 .d-grid 를 사용하면 자식태그인 button 이 가로 너비 전체를 사용하는 블록 레벨 버튼이 됨 -->
+    <div>
+      <button type="button">html 기본 버튼</button>
+      <button type="button" class="btn">부트스트랩 기본 버튼</button>
+      <button type="button" class="btn btn-primary">btn-primary</button>
+      <button type="button" class="btn btn-success">btn-success</button>
+      <button type="button" class="btn btn-outline-info">btn-outline-info</button>
+      <button type="button" class="btn btn-outline-warning">btn-outline-warning</button>
+      <input type="button" class="btn btn-danger" value="input 태그 btn-danger">
+      <input type="button" class="btn btn-light" value="input 태그 btn-light">
+      <a href="#" class="btn btn-secondary">a 태그 btn-secondary</a>
+      <a href="#" class="btn btn-link">a 태그 btn-link</a>
+    </div>
+  </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
