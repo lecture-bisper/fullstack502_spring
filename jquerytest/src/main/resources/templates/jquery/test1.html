@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery 사용하기</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+<!--  서버에 jQuery 저장 후 로딩 -->
+  <script src="/js/jquery-3.7.1.js"></script>
+<!--  CDN 으로 jQuery 로딩-->
+<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <script>
+//  jQuery : 자바스크립트를 쉽게 사용할 수 있도록 해주는 라이브러리
+//  바닐라스크립트(순수 자바스크립트)보다 더 적은 소스코드로 같은 기능을 구현
+//  html/css 를 동적으로 제어, html 에 이벤트 및 효과를 제공함
+//  여러가지 웹 브라우저에서 동일한 형태로 사용하고 결과도 동일하게 출력
+//    HTML5 형태의 웹 표준이 정해지기 이전에는 각 웹 브라우저마다 다르게 출력 됨
+//    개발자는 각 브라우저에 맞게 각각의 화면 및 기능을 따로 구성하였음
+//  자바스크립트의 ajax 기능을 쉽게 사용할 수 있음
+
+  // 설치
+  // 1. jQuery 를 다운로드하여 자신의 서버에 포함하여 사용
+  // 2. CDN(Content Delivery Network) 을 사용하여 외부 서버에서 로드하여 사용
+  //    부트스트랩과 jquery를 함께 사용 시 jquery 가 부트스트랩의 js 파일보다 먼저 로딩되어야 함
+
+  // 사용법
+  // $(css선택자).jquery함수()
+  //
+  // $ : jquery 문법을 사용한다는 의미의 기호
+  // (css선택자) : css에서 사용하는 html 을 검색 및 선택하기 위해서 사용하는 선택자를 그대로 사용
+  //    css의 모든 선택자를 그대로 사용(주로 id 선택자, class 선택자, 태그 선택자, 자식/자손 태그 선택자를 사용)
+  // jquery함수() : jquery 에서 제공하는 기능 함수
+  </script>
+
+  <script>
+//  자바스크립트 코드가 <head> 태그에 입력되어 있어 html 태그들이 로딩되기 전에 이벤트를 등록하는 자바스크립트 코드가 먼저 동작하여 이벤트 등록에 필요한 html 태그를 찾을 수 없기 때문에 오류가 발생함
+// 정상적으로 이벤트를 등록하기 위해서는 자바스크립트 코드를 <body> 태그의 가장 마지막에 입력하거나, 자바스크립트에서 제공하는 이벤트를 통해서 html 태그가 모두 로딩된 후 자바스크립트 코드가 동작하도록 해야 함
+    let btn03 = document.querySelector("#btn03");
+    btn03.addEventListener("click", function() {
+      alert("순수 자바스크립트로 클릭 이벤트 발생");
+    });
+
+    $("#btn04").on("click", function() {
+      alert("jquery 로 클릭 이벤트 발생");
+    });
+  </script>
+
+  <script>
+// window.onload : 현재 페이지가 로딩 중 window.onload 이벤트를 만나면 html 및 css 의 리소스가 모두 로딩된 후 지정한 자바스크립트 코드가 실행 되도록 하는 이벤트
+// html 및 css에 연동된 모든 리소스(이미지, 오디오, 비디오와 같은 리소스)가 다 로딩된 후 동작하는 이벤트
+//     window.onload = function() {
+//       let btn05 = document.querySelector("#btn05");
+//       btn05.addEventListener("click", function() {
+//         alert("순수 자바스크립트로 클릭 이벤트 발생");
+//       });
+//     }
+  </script>
+
+  <script>
+//  현재 주로 사용되는 html 및 css 컨텐츠가 모두 로딩된 후 지정한 자바스크립트가 동작하도록 하는 이벤트
+//  현재 페이지에서 사용하는 html 및 css 만 로딩 후 동작
+    document.addEventListener("DOMContentLoaded", function() {
+      let btn05 = document.querySelector("#btn05");
+      btn05.addEventListener("click", function() {
+        alert("순수 자바스크립트로 클릭 이벤트 발생");
+      });
+    });
+  </script>
+
+  <script>
+//  jquery 에서 제공하는 html 및 css 의 컨텐츠라 모두 로딩된 후 지정한 자바스크립트가 동작하도록 하는 이벤트
+//  document.addEventListener("DOMContentLoaded", function(){}) 과 동일한 방식의 이벤트
+    $(document).ready(function() {
+      $("#btn06").on("click", function() {
+        alert("jquery 로 클릭 이벤트 발생");
+      });
+    });
+  </script>
+
+  <script>
+//    jquery 이벤트 : html 태그에 jquery 를 사용하여 사용자 이벤트를 발생 시킴
+//    on() : 지정한 태그에 지정한 이벤트를 등록
+//      사용법 : $(css선택자).on(이벤트종류, 콜백함수)
+//    off() : 지정한 태그에 지정된 이벤트를 삭제
+//      사용법 : $(css선택자).off(이벤트종류)
+//    one() : 지정한 태그에 지정한 이벤트를 1회용으로 등록
+//      사용법 : $(css선택자).one(이벤트종류, 콜백함수)
+
+  //  이벤트 종류
+  //  마우스 이벤트, 키보드 이벤트, form 이벤트, document/window 이벤트 를 주로 사용함
+
+  // 마우스 이벤트
+  // click : 가장 많이 사용하는 이벤트, 마우스의 왼쪽 버튼을 클릭 시 발생
+  // dblclick : 마우스의 왼쪽 버튼을 더블 클릭 시 발생
+  // contextmenu : 마우스의 오른쪽 버튼을 클릭 시 발생
+  // mousemove : 지정한 태그 안에서 마우스가 이동 시 발생
+  // mouseenter : 지정한 태그에 마우스 포인터가 위치할 경우 발생
+  // mouseleave : 지정한 태그에서 마우스 포인터가 벗어날 경우 발생
+
+    // 키보드 이벤트
+    // keydown : 키보드의 키를 누르는 순간 발생
+    // keyup : 키보드의 키에서 손을 때는 순간 발생
+
+    $(document).ready(function() {
+
+      $("#btn07").on("click", function() {
+        console.log("btn10 에 클릭 이벤트 등록");
+
+        $("#btn10").on("click", function() {
+          alert("이벤트 발생, 알림창 출력");
+        });
+      });
+
+      $("#btn08").on("click", function() {
+        console.log("btn10 에서 클릭 이벤트 삭제");
+
+        $("#btn10").off("click");
+      });
+
+      $("#btn09").on("click", function() {
+        console.log("btn10 에 1회용 클릭 이벤트 등록");
+
+        $("#btn10").one("click", function() {
+          alert("1회용 이벤트 발생, 알림창 출력");
+        });
+      });
+
+
+    //   마우스 이벤트
+      $("#btn-mouse01").on("click", function() {
+        alert("클릭 이벤트 발생");
+      });
+
+      $("#btn-mouse02").click(function() {
+        alert(".click() 함수를 사용한 클릭 이벤트 발생");
+      });
+
+      $("#btn-mouse03").on("dblclick", function() {
+        alert("더블 클릭 이벤트 발생");
+      });
+
+      $("#btn-mouse04").on("contextmenu", function() {
+        alert("마우스 오른쪽 버튼 클릭 이벤트");
+      });
+
+      $("#btn-mouse06").on("mouseup", function() {
+        alert("마우스 업 이벤트 발생");
+      });
+
+      $("#btn-mouse05").on("mousedown", function() {
+        alert("마우스 다운 이벤트 발생");
+      });
+
+      $("#div-mouse").on("mouseenter", function () {
+        alert("지정한 태그에 마우스 포인터가 올라감");
+      });
+
+      $("#div-mouse").on("mouseleave", function () {
+        alert("지정한 태그에서 마우스 포인터가 나감");
+      });
+
+      $("#div-mouse").on("mousemove", function(event) {
+        console.log("X : " + event.clientX + ", Y : " + event.clientY + ", divX : " + event.offsetX + ", divY : " + event.offsetY);
+      });
+
+    //   키보드 이벤트
+      $("#input-key01").on("keydown", function () {
+        alert("키 다운 이벤트 발생");
+      });
+
+      $("#input-key02").on("keyup", function () {
+        alert("키 업 이벤트 발생");
+      });
+
+      $("#input-key03").on("keypress", function () {
+        alert("키 프레스 이벤트 발생");
+      });
+
+    //   form 이벤트
+    //   focus : 현재 사용자가 마우스로 클릭한 태그이거나, 키보드로 인하여 데이터가 입력되고 있는 상태
+    //   blur : html 태그에 주어졌었던 focus 를 잃는 상태
+      $("#input-key04").on("focus", function() {
+        $("#input-key04").css({"background-color": "#39d6f5", "font-size": "24px"});
+        console.log("focus 이벤트가 발생했습니다.\nfocus 상태");
+      });
+
+      $("#input-key04").on("blur", function() {
+        $("#input-key04").css({"background-color": "#FFFFFF", "font-size": "16px"});
+        console.log("blur 이벤트가 발생했습니다.\nfocus를 잃음");
+        alert("blur 이벤트가 발생했습니다.\nfocus를 잃음");
+      });
+
+      // change : input 태그의 value 속성에 저장되어 있는 데이터를 사용자가 수정 후 해당 데이터가 확정되는 상태
+      //    focus 가 다른 곳으로 주어졌을 경우 데이터가 확정
+      $("#input-key05").on("change", function() {
+        let text = $("#input-key05").val();
+        console.log("value : " + text);
+      });
+
+      // select : input 태그의 value 값을 드래그로 선택했을 경우 발생
+      $("#input-key05").on("select", function() {
+        alert("select 이벤트 발생");
+      });
+
+      $("#sel01").on("change", function() {
+        alert("ddd");
+      });
+
+      // submit : submit 이벤트는 form 태그의 자식 태그로 존재하는 submit 버튼이 클릭되었을 경우 발생
+      //    form 태그에 submit 이벤트를 등록해야 함
+      $("#frm").on("submit", function() {
+        alert("form 태그의 submit 이벤트 발생");
+      });
+    });
+
+    $(window).on("resize", function() {
+      alert("웹 브라우저 창의 크기가 변경 되었습니다.");
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>jquery 와 순수 자바스크립트의 차이</h3>
+  <br>
+  <button type="button" class="btn btn-primary" id="btn01">순수 자바스크립트 사용 버튼</button>
+  <button type="button" class="btn btn-primary" id="btn02">jquery 사용 버튼</button>
+
+  <br><br>
+
+  <button type="button" class="btn btn-success" id="btn03">순수 자바스크립트로 나중에 이벤트 등록</button>
+  <button type="button" class="btn btn-success" id="btn04">jquery 로 나중에 이벤트 등록</button>
+
+  <br>
+  <br>
+
+  <button type="button" class="btn btn-info" id="btn05">순수 자바스크립트로 나중에 이벤트 등록</button>
+  <button type="button" class="btn btn-info" id="btn06">jquery 로 나중에 이벤트 등록</button>
+
+  <br><hr><br>
+
+  <div>
+    <h3>on(), off(), one() 사용하기</h3>
+    <button type="button" class="btn btn-primary" id="btn07">클릭 이벤트 발생</button>
+    <button type="button" class="btn btn-danger" id="btn08">클릭 이벤트 제거</button>
+    <button type="button" class="btn btn-success" id="btn09">1회용 클릭 이벤트 발생</button>
+    <br><br>
+    <button type="button" class="btn btn-info" id="btn10">클릭 시 알림창 출력</button>
+
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>마우스 이벤트</h3>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse01">click 이벤트</button>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse02">.click() 사용 이벤트</button>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse03">dblclick 이벤트</button>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse04">contextmenu 이벤트</button>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse05">mousedown 이벤트</button>
+    <button type="button" class="btn btn-outline-primary" id="btn-mouse06">mouseup 이벤트</button>
+    <br><br>
+
+    <div style="width: 300px; height: 300px;" class="bg-primary-subtle border" id="div-mouse"></div>
+
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>keydown, keyup 이벤트</h3>
+
+    <input type="text" class="form-control" id="input-key01" value="keydown 이벤트">
+    <input type="text" class="form-control" id="input-key02" value="keyup 이벤트">
+    <input type="text" class="form-control" id="input-key03" value="keypress 이벤트">
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>form 이벤트</h3>
+
+    <form method="get" id="frm">
+      <input type="text" class="form-control mb-2" id="input-key04" value="focus 상태일 경우 이벤트 발생">
+      <input type="text" class="form-control mb-2" id="input-key05" value="내용 없음">
+
+      <select id="sel01" class="form-control mb-2">
+        <option value="사과">사과</option>
+        <option value="배">배</option>
+        <option value="참외">참외</option>
+        <option value="수박">수박</option>
+        <option value="복숭아">복숭아</option>
+      </select>
+
+      <button type="submit" class="btn btn-primary">submit 버튼</button>
+    </form>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script>
+  // 순수 자바스크립트로 이벤트 처리한 소스
+  let btn01 = document.getElementById("btn01");
+  btn01.addEventListener("click", function () {
+    alert("순수 자바스크립트로 클릭 이벤트 발생");
+  });
+
+  // jquery를 사용하여 이벤트 처리한 소스
+  $("#btn02").on("click", function() {
+    alert("jQuery 를 사용한 클릭 이벤트 발생");
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
