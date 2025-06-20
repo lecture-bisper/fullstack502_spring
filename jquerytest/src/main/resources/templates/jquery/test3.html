@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery 사용하기 3</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+    //   animate
+    //   css의 animation 기능을 쉽게 사용하기 위해서 제공하는 jquery 함수
+    //   동작 속도를 입력하지 않을 경우 기본 값으로 애니메이션이 동작함
+    //   애니메이션을 동작하기 위한 css 속성에 미리 지정된 'show', 'hide', 'toggle' 를 사용 할 수 있음
+    //   여러개의 애니메니션을 순차적으로 동작 시킬 수 있음
+
+    //   사용법 : $(CSS선택자).animate({변경 속성1, 변경 속성2, ...},동작속도, 콜백함수);
+    //   동작속도 : slow, fast, 1/1000 초로 직접 입력
+    //   콜백함수 : animation 동작 종료 후 자동 호출되는 함수
+    //   변경속성 : animation 동작으로 변경될 css 속성을 입력, 동시에 여러개의 css 속성을 등록
+
+      $("#btn01").on("click", function () {
+        $("#div-ani01").animate({left: '250px'});
+      });
+
+      $("#btn02").on("click", function () {
+        $("#div-ani01").animate({left: '250px', height: '200px', width: '200px', opacity: '0.5'}, 2000, function() {
+          alert("animate() 동작 후 콜백함수 호출");
+        });
+      });
+
+      $("#btn03").on("click", function () {
+        $("#div-ani01").animate({height: 'hide'});
+      });
+
+      $("#btn04").on("click", function () {
+        $("#div-ani01").animate({height: 'toggle'});
+      });
+
+      $("#btn05").on("click", function () {
+        // jquery 를 이용하여 html 태그를 가져온 후 자바스크립트 변수에 저장
+        let ani = $("#div-ani01");
+        // 자바스크립트 변수에 저장된 html 태그를 사용하여 애니메이션을 순차적으로 실행
+        ani.animate({height: '300px', opacity: '0.5'}, 1500);
+        ani.animate({width: '300px', opacity: '0.8'}, 1500);
+        ani.animate({height: '100px', opacity: '0.5'}, 2000);
+        ani.animate({width: '100px', opacity: '0.8'}, 2000);
+
+        // 매번 jquery를 사용하여 html 태그를 검색 후 함수 실행
+        // $("#div-ani01").animate({height: '300px', opacity: '0.5'}, 1500);
+        // $("#div-ani01").animate({width: '300px', opacity: '0.8'}, 1500);
+        // $("#div-ani01").animate({height: '100px', opacity: '0.5'}, 2000);
+        // $("#div-ani01").animate({width: '100px', opacity: '0.8'}, 2000);
+      });
+
+    //   stop()
+    //   동작 중인 애니메이션을 정지
+    //   전체정지를 true 로 하면 순차적으로 동작되는 모든 애니메이션이 정지, false 로 하면 현재 동작 중인 애니메이션 정지 후 다음 애니메이션이 동작
+    //   끝으로 부분을 true로 하면 현재 동작 중인 애니메이션의 마지막 형태로 즉시 변경, 다음 애니메이션이 있을 경우 마지막 형태에서 다시 시작
+    //   끝으로 부분을 false 로 하면 stop() 실행한 상태에서 현재 애니메이션이 종료, 다음 애니메이션이 있을 경우 정지된 현재 상태에서 다음 애니메이션이 동작함
+    //   사용법 : $(css선택자).stop(전체정지, 끝으로이동);
+    //   전체정지 : true/false, 기본값 false, 동작 중인 애니메이션 및 이어지는 모든 애니메이션을 정지
+    //   끝으로 : true/false, 기본값 false, 현재 동작 중인 애니메이션이 종료되었을 경우의 상태로 이동
+
+    //   메소드 체이닝
+    //   일반적으로 하나의 함수를 하나의 라인에 한번씩 실행하지만 메소드 체이닝 기법은 여러개의 메소드를 이어서 계속 입력하는 방식
+    //   이어진 메소드가 순차적으로 실행됨
+
+      $("#btn06").on("click", function () {
+        let box = $("#div-ani02");
+        box.animate({left: '400px'}, 2000);
+        box.animate({top: '400px'}, 2000);
+        box.animate({left: '0px'}, 2000);
+        box.animate({top: '0px'}, 2000);
+      });
+
+      $("#btn07").on("click", function () {
+        $("#div-ani02").stop();
+        // $("#div-ani02").stop(false, false);
+      });
+
+      $("#btn08").on("click", function () {
+        $("#div-ani02").stop(false, true);
+      });
+
+      $("#btn09").on("click", function () {
+        $("#div-ani02").stop(true, false);
+      });
+
+      $("#btn10").on("click", function () {
+        $("#div-ani02").stop(true, true);
+      });
+
+      $("#btn11").on("click", function () {
+        $("#div-ani02")
+          .animate({left: '400px'}, 2000)
+          .animate({top: '400px'}, 2000)
+          .animate({left: '0px'}, 2000)
+          .animate({top: '0px'}, 2000);
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>animate</h3>
+  <div>
+    <h4>css 속성 1개만 변경</h4>
+
+    <button type="button" class="btn btn-primary" id="btn01">애니메이션 동작</button>
+    <button type="button" class="btn btn-success" id="btn02">애니메이션 속성 동시 동작</button>
+    <button type="button" class="btn btn-secondary" id="btn03">미리 지정된 애니 옵션1</button>
+    <button type="button" class="btn btn-secondary" id="btn04">미리 지정된 애니 옵션2</button>
+    <button type="button" class="btn btn-info" id="btn05">애니메이션 대기열</button>
+
+    <div class="position-relative mt-3">
+      <div class="box bg-warning position-absolute" id="div-ani01"></div>
+    </div>
+
+    <br><hr><br>
+
+    <h4>stop()</h4>
+
+    <button type="button" class="btn btn-primary" id="btn06">애니메이션 시작</button>
+    <button type="button" class="btn btn-success" id="btn07">stop() || stop(false, false)</button>
+    <button type="button" class="btn btn-info" id="btn08">stop(false, true)</button>
+    <button type="button" class="btn btn-warning" id="btn09">stop(true, false)</button>
+    <button type="button" class="btn btn-secondary" id="btn10">stop(true, true)</button>
+    <button type="button" class="btn btn-outline-success" id="btn11">메소드 체이닝 사용 애니메이션 시작</button>
+
+    <div class="position-relative mt-3 border border-2 border-primary" style="width: 500px; height: 500px;">
+      <div class="box bg-primary-subtle position-absolute" id="div-ani02"></div>
+    </div>
+  </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

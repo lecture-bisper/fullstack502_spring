@@ -20,6 +20,26 @@ public class JqueryController {
   public String test2() {
     return "jquery/test2";
   }
+
+  @RequestMapping("/test3")
+  public String test3() {
+    return "jquery/test3";
+  }
+
+  @RequestMapping("/test4")
+  public String test4() {
+    return "jquery/test4";
+  }
+
+  @RequestMapping("/test5")
+  public String test5() {
+    return "jquery/test5";
+  }
+
+  @RequestMapping("/test6")
+  public String test6() {
+    return "jquery/test6";
+  }
 }
 
 

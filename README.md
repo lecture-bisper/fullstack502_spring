@@ -29,3 +29,11 @@
 	2. bootstrap - 프로젝트에 포함하기, grid system, container
 	3. bootstrap - 타이포그라피, 테이블, 테마색상, 버튼
 	4. bootstrap - 유틸리티 (border, rounded, float, clearfix, spacing, size)
+5. 5일차 (jquery)
+	1. jQuery - jquery 설치(다운로드, CDN), jquery 사용법, html 로딩 후 자바스크립트 동작 이벤트, 이벤트 등록 삭제(on, off, one), 마우스/키보드/폼 이벤트
+	2. jQuery - 이펙트 함수 (show, hide, toggle, slide, fade)
+6. 6일차 (jquery)
+	1. jQuery - 이펙트 함수 (animate, stop), 체이닝기법
+	2. jQuery - 컨텐츠에서 데이터 가져오기, 설정하기 (text, html, val, attr)
+	3. jQuery - html 태그 추가/삭제 (append, prepend, after, before, remove, empty), 클래스 추가/삭제(addClass, removeClass, toggleClass)
+	4. jQuery - 트래버싱 (parent, parents, parentUntil, children, find, siblings, next, nextAll, nextUntil, first, last, eq, filter, not)
