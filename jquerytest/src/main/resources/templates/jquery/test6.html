@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery 사용하기 6</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <style>
+    .ance *, .desc * {
+      display: block;
+      border: 2px solid lightgray;
+      color: lightgray;
+      padding: 8px;
+      margin: 16px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function() {
+    //   jquery 에서 html 태그를 검색하기 위한 방법으로 css선택자를 사용하는 방법이 아닌 다른 방법을 제공함
+    //   parent, parents, parentsUntil, children, find
+
+    //   parent() : 지정한 html 태그의 부모 태그를 선택하는 함수(1개만 선택)
+    //   parents() : 지정한 html 태그의 모든 조상 태그를 선택하는 함수(여러개 선택)
+    //   parentsUntil() : 첫번째로 지정한 html 태그의 조상 태그 중 두번째로 지정한 태그 사이의 모든 조상 태그를 선택함
+    //   사용법 : $(css선택자).부모함수(옵션);
+    //            $(css선택자).parentsUntil(두번째css선택자);
+
+
+      $("#btn-select-parent").on("click", function() {
+        $("#div01 span").parent().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-select-parents").on("click", function() {
+        $("#div01 span").parents().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-select-parents-until").on("click", function() {
+        $("#div01 span").parentsUntil(".ance > div").css({"color": "red", "border": "2px solid red"});
+      });
+
+      //   children() : 지정한 html 태그의 모든 직계 자식 태그를 선택하는 함수
+      //    사용법 : $(css선택자).children(옵션);
+      //    옵션 : css 선택자를 사용 시 직계 자식 태그 중 css 선택자에 해당하는 html 태그만 선택
+
+      //   find() : 지정한 html 태그의 모든 자손 태그 중에서 지정한 html 태그만 선택하는 함수, 두번째 선택자로 * 를 사용할 경우 모든 자손 태그를 선택함
+      //    사용법 : $("css선택자).find(두번째선택자);
+
+
+      $("#btn-select-children1").on("click", function() {
+        $("#div02 .desc").children().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-select-children2").on("click", function() {
+        $("#div02 .desc").children("div.first").css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-select-find1").on("click", function() {
+        $("#div02 .desc").find("p").css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-select-find2").on("click", function() {
+        $("#div02 .desc").find("*").css({"color": "red", "border": "2px solid red"});
+      });
+
+
+    //   siblings() : 지정한 html 태그의 형제 태그를 모두 선택
+    //   사용법 : $(css선택자).siblings(옵션)
+    //   옵션 : css선택자로 옵션을 사용하면, 형제 태그 중 두번째 선택자로 선택한 태그만 모두 선택
+
+    //   next() : 지정한 html 태그의 다음 형제 태그를 선택
+    //   nextAll() : 지정한 html 태그의 다음의 모든 형제 태그를 선택
+    //   사용법 : $(css선택자).형제태그함수();
+    //   nextUntil() : 지정한 html 태그의 다음 형제 태그부터 두번째 선택자로 선택한 태그 사이의 형제 태그를 모두 선택
+    //   사용법 : $(css선택자).nextUntil(두번째선택자);
+
+    //   prev(), prevAll(), prevUntil() 은 이전 형제태그를 선택, next(), nextAll(), nextUntil() 과 동일한 방법으로 사용
+
+      $("#btn-siblings").on("click", function() {
+        $("#div03 > h1").siblings().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-next").on("click", function() {
+        $("#div03 > h1").next().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-next-all").on("click", function() {
+        $("#div03 > h1").nextAll().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-next-until").on("click", function() {
+        $("#div03 > h1").nextUntil("h5").css({"color": "red", "border": "2px solid red"});
+      });
+
+    //   first() : css 선택자로 지정한 태그 중 첫번째로 검색되는 태그를 선택
+    //   last() : css 선택자로 지정한 태그 중 마지막으로 검색되는 태그를 선택
+    //   사용법 : $(css선택자).first|last();
+
+    //   eq() : css 선택자로 지정한 태그 중 지정한 순번에 있는 태그를 선택, 시작번호는 0
+    //   사용법 : $(css선택자).eq(index);
+
+    //   filter() : 첫번째 선택자로 지정한 태그 중 두번째 선택자로 검색되는 모든 태그를 선택
+    //   사용법 : $(css선택자).filter(두번째 선택자);
+    //   not() : filter()로 선택된 태그와 반대되는 태그를 선택
+    //   사용법 : $(css선택자).not(두번째 선택자);
+
+      $("#btn-first").on("click", function() {
+        $("#div04 > div").first().css({"color": "red", "border": "2px solid red", background: "yellow"});
+      });
+
+      $("#btn-last").on("click", function() {
+        $("#div04 > div").last().css({"color": "red", "border": "2px solid red", background: "yellow"});
+      });
+
+      $("#btn-eq").on("click", function() {
+        $("#div04 > div").eq(1).css({"color": "red", "border": "2px solid red", background: "yellow"});
+      });
+
+      $("#btn-filter").on("click", function() {
+        $("#div05 p").filter(".intro").css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btn-not").on("click", function() {
+        $("#div05 p").not(".intro").css({"color": "red", "border": "2px solid red"});
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>jquery 로 html 태그 검색하기</h3>
+
+  <div class="mt-3">
+    <h4>parent, parents, parentsUntil</h4>
+
+    <button type="button" class="btn btn-primary" id="btn-select-parent">parent() 로 선택</button>
+    <button type="button" class="btn btn-success" id="btn-select-parents">parents() 로 선택</button>
+    <button type="button" class="btn btn-info" id="btn-select-parents-until">parentsUntil() 로 선택</button>
+
+    <div class="mt-3" id="div01">
+      <div class="ance">
+        <div>div (조상 태그)
+          <ul>ul (부모 태그)
+            <li>li (선택할 태그)
+              <span>span (자식 태그)</span>
+            </li>
+          </ul>
+        </div>
+        <div>div (조상 태그)
+          <p>p (선택할 태그)
+            <span>span (자식 태그)</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h3>children, find</h3>
+
+    <button type="button" class="btn btn-primary" id="btn-select-children1">children() 으로 검색</button>
+    <button type="button" class="btn btn-primary" id="btn-select-children2">children() 지정한 것 검색</button>
+    <button type="button" class="btn btn-primary" id="btn-select-find1">find() 로 지정한 것 검색</button>
+    <button type="button" class="btn btn-primary" id="btn-select-find2">find() 로 모든 자손태그 검색</button>
+
+    <div class="mt-3" id="div02">
+      <div class="desc">div (첫번째로 선택할 태그)
+        <div class="first">div (직계 자식 태그)
+          <div>div (자손 태그)
+            <p>p (자손 태그)
+              <span>span (자손 태그)</span>
+            </p>
+          </div>
+        </div>
+        <div class="second">div (직계 자식 태그)
+          <div>div (자손 태그)
+            <p>p (자손 태그)
+              <span>span (자손 태그)</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h4>siblings, next, nextAll, nextUntil, prev, prevAll, prevUntil</h4>
+
+    <button type="button" class="btn btn-primary" id="btn-siblings">siblings() 사용</button>
+    <button type="button" class="btn btn-primary" id="btn-next">next() 사용</button>
+    <button type="button" class="btn btn-primary" id="btn-next-all">nextAll() 사용</button>
+    <button type="button" class="btn btn-primary" id="btn-next-until">nextUntil() 사용</button>
+
+    <div class="mt-3" id="div03">
+      <h6>prev 5 형제 태그</h6>
+      <h5>prev 4 형제 태그</h5>
+      <h4>prev 3 형제 태그</h4>
+      <h3>prev 2 형제 태그</h3>
+      <h2>prev 1 형제 태그</h2>
+      <h1>선택할 태그</h1>
+      <h2>next 1 형제 태그</h2>
+      <h3>next 2 형제 태그</h3>
+      <h4>next 3 형제 태그</h4>
+      <h5>next 4 형제 태그</h5>
+      <h6>next 5 형제 태그</h6>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div>
+    <h4>first, last, eq, filter, not</h4>
+
+    <button type="button" class="btn btn-primary" id="btn-first">first()</button>
+    <button type="button" class="btn btn-secondary" id="btn-last">last()</button>
+    <button type="button" class="btn btn-success" id="btn-eq">eq()</button>
+    <button type="button" class="btn btn-info" id="btn-filter">filter()</button>
+    <button type="button" class="btn btn-warning" id="btn-not">not()</button>
+
+    <div class="mt-3" id="div04">
+      <div class="border border-dark p-3">
+        <p>첫번째 div의 첫번째 p태그</p>
+        <p>첫번째 div의 두번째 p태그</p>
+      </div>
+      <div class="border border-dark p-3">
+        <p>두번째 div의 첫번째 p태그</p>
+        <p>두번째 div의 두번째 p태그</p>
+      </div>
+      <div class="border border-dark p-3">
+        <p>세번째 div의 첫번째 p태그</p>
+        <p>세번째 div의 두번째 p태그</p>
+      </div>
+    </div>
+    <br>
+    <div id="div05">
+      <p>첫번째 p 태그</p>
+      <p class="intro">두번째 p 태그</p>
+      <p class="intro">세번째 p 태그</p>
+      <p>네번째 p 태그</p>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
