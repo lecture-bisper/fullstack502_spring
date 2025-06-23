@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ajax 사용하기</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3 class="text-center">ajax 를 사용하지 않고 계산기 만들기(결과출력)</h3>
+
+  <div class="row">
+    <div class="col-sm-4 mx-auto">
+      <div class="mt-3">
+        <label for="num1" class="form-label">첫번째 숫자 : </label>
+<!--        서버에서 전달받은 데이터를 thymeleaf 를 통해서 input 태그에 출력 -->
+        <input type="text" class="form-control" id="num1" th:value="${num1}">
+      </div>
+      <div class="mt-3">
+        <label for="num2" class="form-label">두번째 숫자 : </label>
+        <input type="text" class="form-control" id="num2" th:value="${num2}">
+      </div>
+      <hr>
+      <div class="mt-3">
+        <label for="result" class="form-label">연산 결과 : </label>
+        <input type="text" class="form-control" id="result" th:value="${result}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
