@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <!-- 문제 2 ) selectBox 파일을 수정하여 구 정보를 선택 시 동 정보도 출력 되도록 select 버튼을 1개 더 추가하여 주소 출력 버튼을 클릭 시 전체 주소가 화면에 출력되는 프로그램을 작성하세요 -->
+  <!-- * 세번째 select box 의 id 는 'sel3' -->
+  <!-- * 주소 출력 버튼은 'type=button', 'id=btn-addr' -->
+  <!-- * 내부 연산을 위한 함수를 따로 생성하여 사용해도 상관없음 -->
+  <!-- * 파일명 : quiz2.html -->
+  <!-- * URL : /ajax/quiz2, /ajax/quiz2result1, /ajax/quiz2result2 -->
+
+  <script>
+    $(document).ready(function(){
+      $("#sel1").on("change", function(){
+        const value1 = $("#sel1 option:selected").val();
+
+        $.ajax({
+          url: "/ajax/quiz2result1",
+          type: "post",
+          data: {areaName: value1},
+          success: function(data) {
+            if (data.length > 0) {
+              const selBox3 = $("#sel3");
+              selBox3.empty();
+
+              const selBox2 = $("#sel2");
+              selBox2.empty();
+
+              let opt = "<option value='' selected>선택하세요</option>";
+              selBox3.append(opt);
+
+              for (let i = 0; i < data.length; i++) {
+                opt += "<option value='" + data[i].areaName + "'>" + data[i].areaName + "</option>"
+              }
+
+              selBox2.append(opt);
+            }
+          },
+          error: function() {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#sel2").on("change", function(){
+        const value2 = $("#sel2 option:selected").val();
+
+        $.ajax({
+          url: "/ajax/quiz2result2",
+          type: "post",
+          data: {areaName: value2},
+          success: function(data) {
+            if (data.length > 0) {
+              const selBox3 = $("#sel3");
+              selBox3.empty();
+
+              let opt = "<option value='' selected>선택하세요</option>";
+
+              for (let i = 0; i < data.length; i++) {
+                opt += "<option value='" + data[i].areaName + "'>" + data[i].areaName + "</option>";
+              }
+
+              selBox3.append(opt);
+            }
+          },
+          error: function() {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#btn-addr").on("click", function() {
+        const addr1 = $("#sel1 option:selected").val();
+        const addr2 = $("#sel2 option:selected").val();
+        const addr3 = $("#sel3 option:selected").val();
+
+        if (addr1 == "" || addr2 == "" || addr3 == "") {
+          alert("주소 선택이 완료되지 않았습니다.");
+        }
+        else {
+          alert(addr1 + "시 " + addr2 + " " + addr3);
+        }
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <select name="sel1" id="sel1" class="form-control">
+        <option value="">선택하세요</option>
+        <option value="서울">서울</option>
+        <option value="대전">대전</option>
+        <option value="대구">대구</option>
+        <option value="부산">부산</option>
+      </select>
+    </div>
+    <div class="col">
+      <select name="sel2" id="sel2" class="form-control">
+        <option value="">선택하세요</option>
+      </select>
+    </div>
+    <div class="col">
+      <select name="sel3" id="sel3" class="form-control">
+        <option value="">선택하세요</option>
+      </select>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary" id="btn-addr">선택 완료</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ajax 사용하기</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <!-- 문제 1 ) ajaxCalView 파일을 참고하여 계산기 프로그램을 작성하세요 -->
+  <!-- * 입력 데이터는 3개 (숫자 2, 연산자 1) -->
+  <!-- * 연산자는 +, -, *, / -->
+  <!-- * 입력된 숫자와 연산자를 선택하고, '계산' 버튼 클릭 시 화면 아래에 연산 결과를 출력 -->
+  <!-- * 파일명 : quiz1.html -->
+  <!-- * URL : /ajax/quiz1 (get, post) -->
+
+  <script>
+    $(document).ready(function () {
+      $("#btn-cal").on("click", function() {
+        const value1 = $("#num1").val();
+        const value2 = $("#num2").val();
+        const value3 = $("#oper option:selected").val();
+
+        const sendDatas = {num1: value1, num2: value2, op: value3};
+
+        $.ajax({
+          url: "/ajax/quiz1",
+          type: "post",
+          data: sendDatas,
+          success: function(data) {
+            const div = $("#div-result");
+            div.empty();
+
+            if (data.result == "success") {
+              let tag = "<label for='result' class='form-label'>계산 결과 : </label>";
+              tag += "<input type='text' class='form-control' id='result' value='" + data.value + "'>";
+
+              div.append(tag);
+              div.removeClass("d-none");
+            }
+          },
+          error: function() {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#btn-reset").on("click", function() {
+        const div = $("#div-result");
+        div.empty();
+        div.addClass("d-none");
+
+        $("#num1").val("");
+        $("#num2").val("");
+        // $("#oper option:selected").attr("selected", false);
+        // $("#oper option:eq(1)").attr("selected", true);
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3 class="text-center">문제 1</h3>
+
+  <div class="row mt-4">
+    <div class="col-sm-4 mx-auto">
+      <div class="mt-3">
+        <label for="num1" class="form-label">첫번째 숫자 : </label>
+        <input type="text" class="form-control" id="num1" name="num1" placeholder="첫번째 숫자를 입력하세요">
+      </div>
+      <div class="mt-3">
+        <label for="oper" class="form-label">연산자 선택 : </label>
+        <select name="oper" id="oper" class="form-control">
+          <option value="+" selected> + </option>
+          <option value="-"> - </option>
+          <option value="*"> * </option>
+          <option value="/"> / </option>
+        </select>
+      </div>
+      <div class="mt-3">
+        <label for="num2" class="form-label">두번째 숫자 : </label>
+        <input type="text" class="form-control" id="num2" name="num2" placeholder="두번째 숫자를 입력하세요">
+      </div>
+      <div class="mt-3 d-grid gap-2">
+        <button type="button" class="btn btn-primary" id="btn-cal">계 산</button>
+        <button type="button" class="btn btn-secondary" id="btn-reset">다시 입력</button>
+      </div>
+      <div class="d-none mt-4 border-top border-2 pt-3" id="div-result">
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
