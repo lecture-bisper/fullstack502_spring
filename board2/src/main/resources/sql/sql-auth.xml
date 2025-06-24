@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="btic.full502.board2.mapper.AuthMapper">
+
+<!--  사용자 존재 여부 확인 -->
+<!--  1. 매개변수는 String 타입, 2개의 매개변수가 있을 경우 map 타입을 사용, 3개 이상일 경우 DTO 타입 사용 -->
+<!--  2. 반환타입은 int -->
+  <select id="isUserInfo" resultType="int" parameterType="map">
+    SELECT count(*) AS cnt
+    FROM t_user
+    WHERE user_id = #{userId}
+    AND user_pw = #{userPw}
+  </select>
+
+<!--  사용자 정보 가져오기 -->
+<!--  1. 매개변수는 String 타입 -->
+<!--  2. 반환 타입은 UserDTO 타입 -->
+  <select id="selectUserInfo" resultType="btic.full502.board2.dto.UserDTO" parameterType="String">
+    SELECT user_idx, user_id, user_pw, user_name, user_email
+    FROM t_user
+    WHERE user_id = #{userId}
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
