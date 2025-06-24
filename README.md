@@ -42,3 +42,10 @@
 	2. Ajax - ajax 를 사용한 계산기 만들기
 	3. Ajax - ajax 를 사용하여 select box의 데이터 수정하기
 	4. ajax - ajax 문제 2개 풀이
+8. 8일차 (board2)
+	1. board2 - 게시판 목록 보기
+	2. board2 - 게시판 글 상세보기
+	3. board2 - 게시판 글 등록하기
+	4. board2 - AuthController (로그인, 로그인 처리, 로그인 실패, 로그아웃)
+	5. board2 - AuthService, AuthMapper, sql-auth.xml, UserDTO
+	6. board2 - View Templates(login, loginFile, loginOK, logout, join)
