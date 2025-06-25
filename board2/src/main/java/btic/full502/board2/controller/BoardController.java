@@ -75,6 +75,23 @@ public class BoardController {
 
     return "redirect:/board/boardList.do";
   }
+
+  @RequestMapping(value = "downloadBoardFile.do", method = RequestMethod.GET)
+  public void downloadBoardFile(@RequestParam("fileIdx") int fileIdx, @RequestParam("boardIdx") int boardIdx, HttpServletResponse resp) throws Exception {
+    FileDTO file = boardService.selectBoardFileInfo(fileIdx, boardIdx);
+
+    if (ObjectUtils.isEmpty(file) == false) {
+      String fileName = file.getOriginalFileName();
+      byte[] files = FileUtils.readFileToByteArray(new File(file.getStoredFileName()));
+
+      resp.setContentType("application/octet-stream");
+      resp.setContentLength(files.length);
+      resp.setHeader("Content-Disposition", "attachment; filename=\"" + URLEncoder.encode(fileName, "UTF-8") + "\"" );
+      resp.getOutputStream().write(files);
+      resp.getOutputStream().flush();
+      resp.getOutputStream().close();
+    }
+  }
 }
 
 

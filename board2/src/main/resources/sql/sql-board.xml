@@ -53,6 +53,18 @@
       (#{item.boardIdx}, #{item.originalFileName}, #{item.storedFileName}, #{item.fileSize}, #{item.createId}, NOW())
     </foreach>
   </insert>
+
+<!--  다운로드할 파일 정보 가져오기 -->
+<!--  1. 게시물 번호와 파일 번호를 Map 타입으로 가져옴 -->
+<!--  2. FileDTO 타입으로 반환 -->
+<!--  3. 매개변수로 받아온 데이터를 사용하여 SQL 실행 -->
+  <select id="selectBoardFileInfo" resultType="btic.full502.board2.dto.FileDTO" parameterType="map">
+    SELECT file_idx, board_idx, original_file_name, stored_file_name, file_size, create_id, create_date, update_id, update_date
+    FROM t_files
+    WHERE file_idx = #{fileIdx}
+    AND board_idx = #{boardIdx}
+  </select>
+
 <!--  첨부파일 목록 가져오기 -->
 <!--  1. 게시물 번호를 가져옴 -->
 <!--  2. List<FileDTO> 타입으로 반환 -->

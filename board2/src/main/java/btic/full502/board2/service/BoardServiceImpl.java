@@ -86,6 +86,13 @@ public class BoardServiceImpl implements BoardService {
 //    }
 
   }
+
+//  다운로드할 파일 정보 가져오기
+//  1. 매개변수로 파일번호와 게시물번호를 가져옴
+//  2. mapper 를 이용하여 지정한 게시물 번호와 파일 번호를 사용하는 파일 정보를 데이터베이스에 가져옴
+  @Override
+  public FileDTO selectBoardFileInfo(int fileIdx, int boardIdx) {
+    return boardMapper.selectBoardFileInfo(fileIdx, boardIdx);
   }
 }
 
