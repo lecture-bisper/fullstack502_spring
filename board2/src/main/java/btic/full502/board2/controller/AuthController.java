@@ -51,6 +51,8 @@ public class AuthController {
   @RequestMapping("/loginProcess.do")
   public String loginProcess(@RequestParam("userId") String userId, @RequestParam("userPw") String userPw, HttpServletRequest req) throws Exception {
 
+//    HttpServletRequest : 클라이언트가 서버로 요청 시 전달되는 Request 객체를 의미, HttpServletRequest 객체에 Session 정보가 포함되어 있음
+
 //    사용자가 입력한 ID/pw 를 사용하는 사용자 정보가 있는지 확인
     int result = authService.isUserInfo(userId, userPw);
 
@@ -68,6 +70,8 @@ public class AuthController {
 //      세션 유지 시간 설정 (초로 계산)
       session.setMaxInactiveInterval(60 * 5);
 
+//      리다이렉트 : 서버가 클라이언트에게 지정한 URL로 다시 접속하라고 지시 (클라이언트가 지정한 URL로 다시 접속, 처음 접속 시 요청한 Request 정보가 없음)
+//      포워드 : 서버 내부에서 서버 내부의 다른 URL로 이동 (서버 내부에서 이동, 처음 접속 시 요청한 Request 정보를 유지)
       return "redirect:/auth/loginOK.do";
     }
     else {
@@ -100,6 +104,26 @@ public class AuthController {
     mv.addObject("user", user);
 
     return mv;
+
+//    if (session.getAttribute("userId") != null) {
+////    UserDTO 타입의 객체 생성
+//      UserDTO user = new UserDTO();
+////    세션에 저장된 정보를 UserDTO 객체에 저장
+////    세션에 저장된 데이터는 모두 Object 타입이기 때문에 강제 타입 변환 필수
+//      user.setUserId((String) session.getAttribute("userId"));
+//      user.setUserName((String) session.getAttribute("userName"));
+//      user.setUserEmail((String) session.getAttribute("userEmail"));
+//
+////    ModelAndView 객체에 데이터 저장
+//      mv.addObject("user", user);
+//
+//      return mv;
+//    }
+//    else {
+////      setViewName() : ModelAndView 클래스에서 제공하는 메소드로 ModelAndView의 생성자를 통해서 지정한 View 파일을 새로 설정하는 메소드
+//      mv.setViewName("board/auth/loginFail");
+//      return mv;
+//    }
   }
 
 //  로그인 실패

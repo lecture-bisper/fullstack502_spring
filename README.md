@@ -49,3 +49,10 @@
 	4. board2 - AuthController (로그인, 로그인 처리, 로그인 실패, 로그아웃)
 	5. board2 - AuthService, AuthMapper, sql-auth.xml, UserDTO
 	6. board2 - View Templates(login, loginFile, loginOK, logout, join)
+9. 9일차 (board2)
+	1. board2 - 인터셉터를 사용한 로그인 처리
+	2. board2 - 파일 업로드 용 라이브러리 추가
+	3. board2 - 파일 업로드를 위한 FileDTO, Controller, Service 추가
+	4. board2 - 파일 업로드를 위한 Mapper, sql-board.xml 추가
+	5. board2 - 첨부파일 목록을 위한 boardDetail.html, Service, Mapper, xml 추가
+	6. board2 - 파일 다운로드를 위한 Controller, Service, Mapper, xml, View 추가
