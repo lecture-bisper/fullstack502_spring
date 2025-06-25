@@ -1,6 +1,7 @@
 package btic.full502.board2.mapper;
 
 import btic.full502.board2.dto.BoardDTO;
+import btic.full502.board2.dto.FileDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,6 +14,8 @@ public interface BoardMapper {
   BoardDTO selectBoardDetail(@Param("boardIdx") int boardIdx) throws Exception;
 
   void boardWrite(BoardDTO board) throws Exception;
+
+  void insertBoardFileList(List<FileDTO> fileList) throws Exception;
 }
 
 
