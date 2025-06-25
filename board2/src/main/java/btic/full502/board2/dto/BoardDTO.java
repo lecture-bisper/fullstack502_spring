@@ -2,6 +2,8 @@ package btic.full502.board2.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class BoardDTO {
 
@@ -13,6 +15,9 @@ public class BoardDTO {
   private String updateId;
   private String updateDate;
   private int hitCnt;
+
+//  첨부파일 목록을 저장하는 list
+  private List<FileDTO> fileList;
 
 }
 

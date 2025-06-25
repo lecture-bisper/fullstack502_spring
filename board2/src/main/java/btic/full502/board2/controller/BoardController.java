@@ -1,14 +1,21 @@
 package btic.full502.board2.controller;
 
 import btic.full502.board2.dto.BoardDTO;
+import btic.full502.board2.dto.FileDTO;
 import btic.full502.board2.service.BoardService;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 
 @Controller
@@ -59,8 +66,12 @@ public class BoardController {
 //  2. 서비스를 이용하여 클라이언트에서 가져온 데이터를 데이터베이스에 등록
 //  3. 게시글 목록 페이지로 리다이렉트
   @RequestMapping(value = "/boardWrite.do", method = RequestMethod.POST)
-  public String boardWrite(BoardDTO board) throws Exception {
-    boardService.boardWrite(board);
+  public String boardWrite(BoardDTO board, MultipartHttpServletRequest multipart) throws Exception {
+
+//    MultipartHttpServletRequest : 클라이언트에서 파일을 업로드할 경우 파일에 대한 정보를 가지고 있는 Request 클래스
+
+//    매개변수로 받아온 Multipart 데이터를 서비스로 전달
+    boardService.boardWrite(board, multipart);
 
     return "redirect:/board/boardList.do";
   }
