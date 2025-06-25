@@ -34,7 +34,13 @@ public class BoardServiceImpl implements BoardService {
 //  2. 가져온 게시글 상세 정보를 반환
   @Override
   public BoardDTO selectBoardDetail(int boardIdx) throws Exception {
+//    지정한 번호의 게시물 상세정보 가져오기 (첨부파일 목록은 없음)
     BoardDTO board = boardMapper.selectBoardDetail(boardIdx);
+//    지정한 게시물의 첨부파일 목록을 가져옴
+    List<FileDTO> fileList = boardMapper.selectBoardFileList(boardIdx);
+//    가져온 첨부파일 목록을 기존 게시물 상세 정보에 저장
+    board.setFileList(fileList);
+//    첨부파일 목록까지 가지고 있는 BoardDTO 객체를 반환
     return board;
   }
 

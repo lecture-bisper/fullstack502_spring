@@ -53,6 +53,17 @@
       (#{item.boardIdx}, #{item.originalFileName}, #{item.storedFileName}, #{item.fileSize}, #{item.createId}, NOW())
     </foreach>
   </insert>
+<!--  첨부파일 목록 가져오기 -->
+<!--  1. 게시물 번호를 가져옴 -->
+<!--  2. List<FileDTO> 타입으로 반환 -->
+<!--  3. 게시물 번호를 사용하여 SQL 실행 -->
+  <select id="selectBoardFileList" resultType="btic.full502.board2.dto.FileDTO" parameterType="int">
+    SELECT file_idx, board_idx, original_file_name, stored_file_name,
+      FORMAT(ROUND(file_size / 1024), 0) AS file_size, create_id, create_date, update_id, update_date
+    FROM t_files
+    WHERE board_idx = #{boardIdx}
+  </select>
+
 </mapper>
 
 
