@@ -56,3 +56,9 @@
 	4. board2 - 파일 업로드를 위한 Mapper, sql-board.xml 추가
 	5. board2 - 첨부파일 목록을 위한 boardDetail.html, Service, Mapper, xml 추가
 	6. board2 - 파일 다운로드를 위한 Controller, Service, Mapper, xml, View 추가
+10. 10일차 (outsideDir, board3)
+	1. outsideDir - 외부 폴더 등록하여 사용하기
+	2. outsideDir - 스케쥴러 사용하기
+	3. board3 - REST 방식 게시판 만들기 (Controller)
+	4. board3 - REST 방식 게시판 만들기 (Service, DTO, Mapper, xml)
+	5. board3 - REST API 라이브러리 만들기 및 테스트 (ApiController)
