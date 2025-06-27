@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitc.full502.board3.mapper.PageBoardMapper">
+  <select id="selectPageBoardList" resultType="bitc.full502.board3.dto.BoardDTO">
+    SELECT board_idx, title, create_id, create_date, hit_cnt
+    FROM t_board
+    WHERE deleted_yn = 'N'
+    ORDER BY board_idx DESC
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
