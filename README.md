@@ -68,3 +68,8 @@
 	3. xmljsonparser - open api 사용하기 (JAXB 라이브러리 추가)
 	4. xmljsonparser - open api 사용하기 (xml 파일 파싱, ParserController, ParserService, fullDataFile)
 	5. xmljsonparser - open api 사용하기 (open Api url 파싱, ParserController, ParserService, fullDataUrl, ajax 사용)
+12. 12일차 (jpatest)
+	1. jpatest - Jpa 사용 설정하기 (옵션별 데이터베이스 동작 확인)
+	2. jpatest - Entity 로 데이터베이스 테이블 생성 및 data.sql 로 더미데이터 추가
+	3. jpatest - JpaReposity 의 기본 메소드, 쿼리 메소드 (생성 방법 및 사용 방법 설명)
+	4. jpatest - JpaReposity 의 기본 메소드 사용하기
