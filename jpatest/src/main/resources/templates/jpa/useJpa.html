@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#find-by-id").on("click", function() {
+        $.ajax({
+          url: "/jpa/findById",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#find-all").on("click", function() {
+        $.ajax({
+          url: "/jpa/findAll",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#save-insert").on("click", function() {
+        $.ajax({
+          url: "/jpa/saveInsert",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#save-all-insert").on("click", function() {
+        $.ajax({
+          url: "/jpa/saveAllInsert",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#save-update").on("click", function() {
+        $.ajax({
+          url: "/jpa/saveUpdate",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#count").on("click", function() {
+        $.ajax({
+          url: "/jpa/count",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#delete-by-id").on("click", function() {
+        $.ajax({
+          url: "/jpa/deleteById",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+
+      $("#delete-all").on("click", function() {
+        $.ajax({
+          url: "/jpa/deleteAll",
+          type: "post",
+          success: function (data) {
+            alert("통신 성공");
+          },
+          error: function () {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>JPA 기본 메소드</h3>
+  <button type="button" class="btn btn-primary" id="find-by-id">findById</button>
+  <button type="button" class="btn btn-primary" id="find-all">findAll</button>
+  <button type="button" class="btn btn-success" id="save-insert">save (insert)</button>
+  <button type="button" class="btn btn-success" id="save-all-insert">saveAll (insert)</button>
+  <button type="button" class="btn btn-success" id="save-update">save (update)</button>
+  <button type="button" class="btn btn-info" id="count">count</button>
+  <button type="button" class="btn btn-danger" id="delete-by-id">deleteById</button>
+  <button type="button" class="btn btn-danger" id="delete-all">deleteAll</button>
+
+  <br><hr><br>
+
+  <h3>JPA 쿼리 메소드</h3>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
