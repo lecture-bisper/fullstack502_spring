@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPA 를 사용한 게시판</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+          crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#btn-list").on("click", function () {
+        location.href = "/jpa/board";
+      });
+
+      $("#btn-delete").on("click", function () {
+        $("#method").val("DELETE");
+
+        const frm = $("#frm")[0];
+        frm.action = "/jpa/board/" + $("#board-idx").val();
+        frm.submit();
+      });
+
+      $("#btn-update").on("click", function () {
+        $("#method").val("PUT");
+
+        const frm = $("#frm")[0];
+        frm.action = "/jpa/board/" + $("#board-idx").val();
+        frm.submit();
+      });
+    });
+  </script>
+</head>
+<body>
+
+<nav th:replace="~{/layout/header :: headerNavbar}"></nav>
+<header th:replace="~{/layout/header :: headerBasic('상세보기')}"></header>
+
+<main class="container mt-5">
+  <section>
+    <form action="#" id="frm" method="post">
+      <input type="hidden" id="method" name="_method">
+
+      <div class="row mt-4">
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="board-idx" name="boardIdx" readonly th:value="${board.boardIdx}">
+            <label for="board-idx">번 호</label>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" th:value="${board.title}">
+            <label for="title">제 목</label>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="hit-cnt" name="hitCnt" readonly th:value="${board.hitCnt}">
+            <label for="hit-cnt">조회수</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="create-id" name="createId" readonly th:value="${board.createId}">
+            <label for="create-id">작성자</label>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="create-date" name="createDate" readonly th:value="${board.createDate}">
+            <label for="create-date">등록날짜</label>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="update-id" name="updateId" placeholder="사용자 ID를 입력하세요" th:value="${board.updateId}">
+            <label for="update-id">수정자</label>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="update-date" name="updateDate" readonly th:value="${board.updateDate}">
+            <label for="update-date">수정날짜</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm">
+          <div class="form-floating">
+            <textarea class="form-control" name="contents" id="contents" style="height: 200px;" placeholder="글 내용을 입력하세요" th:text="${board.contents}"></textarea>
+            <label for="contents">내 용</label>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm">
+          <button type="button" class="btn btn-secondary" id="btn-list">목록</button>
+        </div>
+        <div class="col-sm d-flex justify-content-end">
+          <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+          <button type="button" class="btn btn-warning ms-2" id="btn-update">수정</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer th:replace="~{/layout/footer :: footer}"></footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
