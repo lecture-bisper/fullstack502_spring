@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
 //    지정한 number 를 기준으로 기존 데이터 검색
     ProductEntity item = productRepository.findById(number).orElse(null);
     item.setName("김혜자 돈까스 도시락");
-    item.setDescription("맛있는 돈까스 도시락");
+//    item.setDescription("맛있는 돈까스 도시락");
     item.setUpdateDate(LocalDateTime.now());
 
     productRepository.save(item);

@@ -56,7 +56,7 @@ public class JPATestController {
     product.setName("레드불");
     product.setPrice(2500);
     product.setStock(10);
-    product.setDescription("밤샐때는 레드불");
+//    product.setDescription("밤샐때는 레드불");
     product.setCreateDate(LocalDateTime.now());
 
     productService.insertProduct(product);
@@ -70,21 +70,21 @@ public class JPATestController {
     item1.setName("핫식스");
     item1.setPrice(2200);
     item1.setStock(5);
-    item1.setDescription("밤샐때는 핫식스도 좋아요");
+//    item1.setDescription("밤샐때는 핫식스도 좋아요");
     item1.setCreateDate(LocalDateTime.now());
 
     ProductEntity item2 = new ProductEntity();
     item2.setName("몬스터 에너지");
     item2.setPrice(2300);
     item2.setStock(5);
-    item2.setDescription("핫식스보다 효과가 확실함");
+//    item2.setDescription("핫식스보다 효과가 확실함");
     item2.setCreateDate(LocalDateTime.now());
 
     ProductEntity item3 = new ProductEntity();
     item3.setName("포카리 스웨트");
     item3.setPrice(2300);
     item3.setStock(5);
-    item3.setDescription("전통적인 에너지음료, ");
+//    item3.setDescription("전통적인 에너지음료, ");
     item3.setCreateDate(LocalDateTime.now());
 
     List<ProductEntity> itemList = new ArrayList<>();

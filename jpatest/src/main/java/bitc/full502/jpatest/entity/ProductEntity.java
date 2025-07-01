@@ -21,10 +21,13 @@ import java.time.LocalDateTime;
 //  @NoArgsConstructor : 롬복 라이브러리에서 제공하는 어노테이션으로 매개변수가 없는 기본 생성자를 자동으로 생성
 @NoArgsConstructor
 //  @AllArgsConstructor : 롬복 라이브러리에서 제공하는 어노테이션으로 필드의 개수만큼 매개변수가 존재하는 생성자를 자동으로 생성
-@AllArgsConstructor
+//@AllArgsConstructor
 //  @ToString : 롬복 라이브러리에서 제공하는 어노테이션으로 toString 메소드를 자동으로 생성
 //  @EqualsAndHashCode : 롬복 라이브러리에서 제공하는 어노테이션으로 equals(), hashCode() 메소드를 자동으로 생성
-public class ProductEntity {
+//  callSuper : 부모 클래스의 필드를 해당 클래스에 포함하는 역할을 하는 속성, 롬복 라이브러리에서 제공
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+public class ProductEntity extends BaseEntity {
 
 //  @Id : 해당 필드가 데이터베이스의 기본키(PK) 컬럼임을 나타내는 어노테이션
   @Id
@@ -58,15 +61,28 @@ public class ProductEntity {
   @Column(nullable = false)
   private int stock;
 
-  @Column(updatable = false)
-  private LocalDateTime createDate;
-
-  @LastModifiedDate
-  private LocalDateTime updateDate;
+//  부모 Entity 인 BaseEntity 에서 createDate, updateDate 필드를 상속받아 사용
+//  @Column(updatable = false)
+//  private LocalDateTime createDate;
+//
+//  @LastModifiedDate
+//  private LocalDateTime updateDate;
 
 //  새로 추가된 컬럼
-  @Column(nullable = false)
-  private String description;
+//  @Column(nullable = false)
+//  private String description;
+
+//  @OneToOne : Jpa Entity 간의 관계 설정 시 1:1 관계를 설정하는 어노테이션
+//  mappedBy : 어느 Entity 가 기준이 되는 Entity 인지 설정, @OneToOne 어노테이션 사용 시 양방향 매핑이 아니면 사용하지 않아도 됨
+//  @ToString.Exclude : 두 개의 entity에 대한 관계 설정 시 ToString 을 사용하면 순환참조가 발생하기 때문에 순환 참조를 제거하기 위해서 사용함, 양방향 관계 설정이 아닐 경우 사용할 필요없음
+  @OneToOne(mappedBy = "product")
+  @ToString.Exclude
+  private ProductDetailEntity productDetail;
+
+  @ManyToOne
+  @JoinColumn(name = "provider_id")
+  @ToString.Exclude
+  private ProviderEntity provider;
 }
 
 
