@@ -73,3 +73,9 @@
 	2. jpatest - Entity 로 데이터베이스 테이블 생성 및 data.sql 로 더미데이터 추가
 	3. jpatest - JpaReposity 의 기본 메소드, 쿼리 메소드 (생성 방법 및 사용 방법 설명)
 	4. jpatest - JpaReposity 의 기본 메소드 사용하기
+13. 13일차 (jpatest, board4, board5)
+	1. board4 - JPA를 사용한 게시판 만들기, DB세팅
+	2. board4 - Entity, Repository 생성
+	3. board4 - Controller, Service, View Templates 생성 및 전체 테스트
+	4. board5 - JPA 에서 Entity 관계 설정하기 (OneToOne, ManyToOne, OneToMany)
+	5. jpatest - JPA Audit 기능 사용, Entity 상속
