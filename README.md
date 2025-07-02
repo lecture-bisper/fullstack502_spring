@@ -79,3 +79,10 @@
 	3. board4 - Controller, Service, View Templates 생성 및 전체 테스트
 	4. board5 - JPA 에서 Entity 관계 설정하기 (OneToOne, ManyToOne, OneToMany)
 	5. jpatest - JPA Audit 기능 사용, Entity 상속
+14. 14일차 (jpastudy, jpastudy2)
+	1. jpastudy - jpa의 Entity 클래스로 테이블 만들기(JpaBoardEntity, JpaReplyEntity, JpaProviderEntity, JpaProductEntity, JpaProductDetailEntity)
+	2. jpastudy - jpa Entity 클래스 관계 설정하기 (@OneToOne, @OneToMany, @ManyToOne, @JoinColumn, @ToString.Exclude)
+	3. jpastudy - JpaRepository의 기본 메소드 사용하기 (find, findAll, count, save, saveAll, delete, deleteById, deleteAll)
+	4. jpastudy2 - Employees Entity 클래스 생성하기
+	5. jpastudy2 - JpaRepository 의 쿼리 메소드 생성하기
+	6. jpastudy2 - JpaRepository 의 @Query 어노테이션 사용하기
