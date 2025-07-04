@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: quiz
+  config:
+    activate:
+      on-profile: release
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://58.239.58.243:3306/testdb?characterEncoding=UTF-8&serverTimezone=UTC
+      username: test1
+      password: full502
+      connection-test-query: SELECT 1
+  sql:
+    init:
+      mode: always
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    defer-datasource-initialization: true

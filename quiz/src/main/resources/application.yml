@@ -1,0 +1,54 @@
+# application.properties 파일 형식을 사용자가 보기 쉬운 방식인 yaml 방식으로 변경한 설정파일
+# yml 사용 시 중복되는 패키지명을 모두 모아서 사용
+# 패키지의 끝에 ' : ' 을 사용하고 다음 라인으로 이동, 들여쓰기 사용
+# 데이터가 있는 패키지는 ' = ' 대신 ' : ' 사용 후 반드시 공백기호 추가 후 값을 입력
+# 패캐지명이 중복되면 안됨
+# application.properties 파일을 먼저 검색하고 없으면 application.yml 파일을 검색
+
+# server.port=8080
+server:
+  port: 8080
+
+# spring.application.name=quiz
+spring:
+  application:
+    name: quiz
+  profiles:
+    active: debug
+
+#  #spring.mvc.hiddenmethod.filter.enabled=true
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
+#
+##spring.datasource.hikari.driver-class-name=com.mysql.cj.jdbc.Driver
+#  datasource:
+#    hikari:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#
+##spring.datasource.hikari.jdbc-url=jdbc:mysql://localhost:3306/testdb?characterEncoding=UTF-8&serverTimezone=UTC
+#      jdbc-url: jdbc:mysql://localhost:3306/testdb?characterEncoding=UTF-8&serverTimezone=UTC
+#
+##spring.datasource.hikari.username=test1
+#      username: test1
+#      password: full502
+#      connection-test-query: SELECT 1
+#
+#  sql:
+#    init:
+#      mode: always
+#
+#  jpa:
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: create
+#    defer-datasource-initialization: true
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+
+
