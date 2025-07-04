@@ -86,3 +86,9 @@
 	4. jpastudy2 - Employees Entity 클래스 생성하기
 	5. jpastudy2 - JpaRepository 의 쿼리 메소드 생성하기
 	6. jpastudy2 - JpaRepository 의 @Query 어노테이션 사용하기
+15. 15일차 (quiz)
+	1. quiz - 문제 풀이 (PhoneBookEntity, PhoneBookDetailEntity 생성, 1:1 관계설정)
+	2. quiz - 문제 풀이 (Controller, Service, Repository 생성)
+	3. quiz - 문제 풀이 (View, JpaRepository의 기본 메소드로 CRUD)
+	4. quiz - 문제 풀이 (JpaRepository의 쿼리 메소드 만들기, @Query 어노테이션 사용)
+	5. quiz - application.yml 프로파일로 변경, 프로파일 분리하기
